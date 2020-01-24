@@ -4,6 +4,8 @@ import { Container } from './styles';
 
 export default function Header() {
   return (
-    <Container>Rocketfy</Container>
+    <Container>
+      <h1>Rocketfy</h1>
+    </Container>
   );
 }
