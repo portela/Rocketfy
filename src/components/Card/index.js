@@ -7,7 +7,7 @@ import { Container, Label } from './styles';
 
 export default function Card({ data, index }) {
   const ref = useRef();
-  // const { move } = useContext(BoardContext);
+  const { move } = useContext(BoardContext);
 
   const [{ isDragging }, dragRef] = useDrag({
     item: { type: 'CARD', index },
@@ -34,7 +34,7 @@ export default function Card({ data, index }) {
 
       if (draggedIndex > targetIndex && draggedTop > targetCenter) return;
 
-      // move(draggedIndex, targetIndex);
+      move(draggedIndex, targetIndex);
     },
   });
 

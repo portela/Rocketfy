@@ -16,12 +16,12 @@ export default function Board() {
   }
 
   return (
-    <BoardContext.Proviver value={{ lists, move }}>
+    <BoardContext.Provider value={{ lists, move }}>
       <Container>
         {lists.map(list => (
           <List key={list.title} data={list} />
         ))}
       </Container>
-    </BoardContext.Proviver>
+    </BoardContext.Provider>
   );
 }
