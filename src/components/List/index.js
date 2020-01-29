@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { MdAdd } from 'react-icons/md';
-
 import Card from '../Card';
-
 import { Container } from './styles';
 
 export default function List({ data, index: listIndex }) {
@@ -25,3 +25,13 @@ export default function List({ data, index: listIndex }) {
     </Container>
   );
 }
+
+List.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    creatable: PropTypes.bool,
+    done: PropTypes.bool,
+    cards: PropTypes.array,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};

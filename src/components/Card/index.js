@@ -1,5 +1,6 @@
 import React, { useRef, useContext } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import PropTypes from 'prop-types';
 
 import BoardContext from '../Board/context';
 
@@ -59,3 +60,13 @@ export default function Card({ data, index, listIndex }) {
     </Container>
   );
 }
+
+Card.propTypes = {
+  data: PropTypes.shape({
+    labels: PropTypes.array,
+    content: PropTypes.string,
+    user: PropTypes.string,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+  listIndex: PropTypes.number.isRequired,
+};
