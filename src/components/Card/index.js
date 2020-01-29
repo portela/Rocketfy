@@ -39,10 +39,9 @@ export default function Card({ data, index, listIndex }) {
 
       if (draggedIndex > targetIndex && draggedTop > targetCenter) return;
 
-      move(draggedListIndex, targetListIndex, draggedIndex, targetIndex);
-
-      item.index = targetIndex;
-      item.listIndex = targetListIndex;
+      // move(draggedListIndex, targetListIndex, draggedIndex, targetIndex);
+      // item.index = targetIndex;
+      // item.listIndex = targetListIndex;
     },
   });
 
