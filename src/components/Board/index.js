@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import produce from 'immer';
-import { loadLists } from '../../services/api';
+import React from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
 
-import BoardContext from './context';
+import { loadLists } from '../../services/api';
 
 import { Container } from './styles';
 import List from '../List';
@@ -10,26 +9,21 @@ import List from '../List';
 const data = loadLists();
 
 export default function Board() {
-  const [lists, setLists] = useState(data);
+  function DoNothing() {}
 
-  function move(fromList, toList, from, to) {
-    setLists(
-      produce(lists, draft => {
-        const dragged = draft[fromList].cards[from];
-
-        draft[fromList].cards.splice(from, 1);
-        draft[toList].cards.splice(to, 0, dragged);
-      })
-    );
-  }
+  function onDragEnd() {}
 
   return (
-    <BoardContext.Provider value={{ lists, move }}>
+    <DragDropContext
+      onDragStart={DoNothing}
+      onDragUpdate={DoNothing}
+      onDragEnd={onDragEnd}
+    >
       <Container>
-        {lists.map((list, index) => (
-          <List key={list.title} index={index} data={list} />
+        {data.map((list, index) => (
+          <List key={list.id} index={index} list={list} />
         ))}
       </Container>
-    </BoardContext.Provider>
+    </DragDropContext>
   );
 }
